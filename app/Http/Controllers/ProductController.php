@@ -3,23 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ProductController extends Controller
 {
     /**
-     * Page /category/id — каталог
+     * Page /products/{id} — карточка товара
      */
-    public function category(Request $request, Category $category): View
+    public function index(Product $product): View
     {
-        $categories = Category::all();
-
-        $products = $category->products()
-            ->filterPrices($request->min_price, $request->max_price)
-            ->paginate(2)
-            ->withQueryString();
-
-        return view('category.show', compact('category', 'categories', 'products'));
+        $product->load('category'); // категория для карточки товара
+        return view('products.show', compact('product'));
     }
 }

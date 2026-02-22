@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +21,8 @@ Route::get('/', function () {
 });
 
 // Роуты каталога
-Route::get('/category/{category}', [ProductController::class, 'category'])->name('category.show');
+Route::get('/category/{category}', [CategoryController::class, 'index'])->name('category.show');
+Route::get('/products/{product}', [ProductController::class, 'index'])->name('products.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
