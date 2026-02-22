@@ -7,6 +7,7 @@
             <p class="text-gray-600 text-sm mb-4 truncate">{{ product.description }}</p>
             <div class="flex justify-between items-center mt-auto">
                 <span class="font-bold text-xl">{{ Number(product.full_price).toFixed(2) }}$</span>
+                <AddToCartButton :product-id="product.id" :stock="product.stock" />
             </div>
         </div>
 
@@ -17,6 +18,7 @@
 </template>
 
 <script setup>
+import AddToCartButton from './AddToCartButton.vue';
 
 defineProps({
     products: {

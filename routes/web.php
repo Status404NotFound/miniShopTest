@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -16,17 +17,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Главная страница редиректит в каталог (на категорию с ID 1)
 Route::get('/', function () {
-    return view('welcome');
-});
+    return redirect()->route('category.show', 1);
+})->name('home');
 
 // Роуты каталога
 Route::get('/category/{category}', [CategoryController::class, 'index'])->name('category.show');
 Route::get('/products/{product}', [ProductController::class, 'index'])->name('products.show');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Роуты корзины (API для Vue)
+Route::prefix('cart')->group(function () {
+    Route::get('/', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/add', [CartController::class, 'add'])->name('cart.add');
+    Route::post('/remove', [CartController::class, 'remove'])->name('cart.remove');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
