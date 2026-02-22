@@ -3,7 +3,7 @@
         <h3 class="font-bold mb-4 text-gray-800">Категории</h3>
         <ul class="mb-6 space-y-2">
             <li v-for="cat in categories" :key="cat.id">
-                <a :href="`/category/${cat.id}`"
+                <a :href="getCategoryUrl(cat.id)"
                    :class="cat.id == categoryId ? 'font-bold text-blue-600' : 'text-gray-600 hover:text-blue-500'">
                     {{ cat.name }}
                 </a>
@@ -25,6 +25,7 @@
             <button type="submit" class="w-full bg-gray-800 text-white py-2 rounded hover:bg-gray-900 transition">
                 Применить
             </button>
+
             <a :href="actionUrl" class="block text-center mt-3 text-sm text-blue-600 hover:underline">
                 Сбросить фильтр
             </a>
@@ -33,7 +34,7 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
     categories: {
         type: Array,
         required: true
@@ -43,16 +44,35 @@ defineProps({
         required: true
     },
     categoryId: {
-        type: [String, Number],
+        type: [Number, String],
         required: true
     },
     minPrice: {
-        type: String,
+        type: [Number, String],
         default: ''
     },
     maxPrice: {
-        type: String,
+        type: [Number, String],
         default: ''
     }
 });
+
+// генерирую ссылку
+const getCategoryUrl = (catId) => {
+    const params = new URLSearchParams();
+
+    // Добавляем параметры только если они не пустые
+    if (props.minPrice !== '' && props.minPrice != null) {
+        params.append('min_price', props.minPrice);
+    }
+
+    if (props.maxPrice !== '' && props.maxPrice != null) {
+        params.append('max_price', props.maxPrice);
+    }
+
+    const queryString = params.toString();
+
+    // верну правильную красивую ссылку
+    return queryString ? `/category/${catId}?${queryString}` : `/category/${catId}`;
+};
 </script>
