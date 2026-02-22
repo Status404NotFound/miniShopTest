@@ -17,13 +17,13 @@
 
 ## Команды для сборки
 
-1. ### Клонировать репозиторий
-`git clone https://github.com/Status404NotFound/miniShopTest`
-### перейти в корень проекта
-2. ### Выполнить установку зависимостей
+1. Клонировать репозиторий</br>
+`git clone https://github.com/Status404NotFound/miniShopTest`</br>
+перейти в корень проекта</br></br>
+2. Выполнить установку зависимостей</br>
 `composer install` </br></br>
-`npm install`
-3. ### Настройка файла конфигурации
+`npm install`</br></br>
+3. Настройка файла конфигурации</br>
 Скопируйте файл .env.example и сохраните его с именем .env.</br>
 Откройте файл .env и укажите доступы к вашей базе данных в блоке DB </br>
 `DB_CONNECTION=mysql`</br>
@@ -31,17 +31,19 @@
 `DB_PORT=3306`</br>
 `DB_DATABASE=имя_вашей_бд`</br>
 `DB_USERNAME=ваш_пользователь`</br>
-`DB_PASSWORD=ваш_пароль`</br>
-4. ### Команда для гинерации ключа приложения
-`php artisan key:generate`
-5. ### Команда для миграции и сидов
-`php artisan migrate --seed`
-6. ### Билд фронта
-`npm run build`
-7. ### Запуск локального сервера
-`php artisan serve`
+`DB_PASSWORD=ваш_пароль`</br></br>
+4. Команда для гинерации ключа приложения</br>
+`php artisan key:generate`</br></br>
+5. Команда для миграции и сидов</br>
+`php artisan migrate --seed`</br></br>
+6. Билд фронта</br>
+`npm run build`</br></br>
+7. Запуск локального сервера</br>
+`php artisan serve`</br></br>
 
 
 ## Тесты
 `php artisan test`
-### Тесты делают RefreshDatabase - очищают базу поэтому после тестов запустите: `php artisan migrate --seed`
+### Тесты делают RefreshDatabase - очищают базу поэтому после тестов запустите:
+`php artisan db:seed`
+`
