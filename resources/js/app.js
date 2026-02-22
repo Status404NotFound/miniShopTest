@@ -9,6 +9,7 @@ import AddToCartButton from './components/AddToCartButton.vue';
 import MiniCart from './components/MiniCart.vue';
 import ProductList from './components/ProductList.vue';
 import ProductFilters from './components/ProductFilters.vue';
+import CheckoutCart from "./components/CheckoutCart.vue";
 
 window.Alpine = Alpine;
 
@@ -24,5 +25,6 @@ app.component('add-to-cart-button', AddToCartButton);
 app.component('mini-cart', MiniCart);
 app.component('product-list', ProductList);
 app.component('product-filters', ProductFilters);
+app.component('checkout-cart', CheckoutCart);
 
 app.mount('#app');

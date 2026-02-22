@@ -23,6 +23,11 @@
                             <span class="text-3xl font-bold text-gray-900">{{ $product->getPriceString() }}$</span>
                             <span class="text-sm text-gray-500">В наличии: {{ $product->stock }} шт.</span>
                         </div>
+
+                        <add-to-cart-button
+                            :product-id="{{ $product->id }}"
+                            :stock="{{ $product->stock }}">
+                        </add-to-cart-button>
                     </div>
                 </div>
 

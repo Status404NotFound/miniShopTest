@@ -16,9 +16,9 @@
                     </x-nav-link>
 
                     @auth
-{{--                        <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">--}}
-{{--                            Мои заказы--}}
-{{--                        </x-nav-link>--}}
+                        <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">
+                            Мои заказы
+                        </x-nav-link>
                     @endauth
                 </div>
             </div>
@@ -67,9 +67,9 @@
             </x-nav-link>
 
             @auth
-{{--                <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">--}}
-{{--                    Мои заказы--}}
-{{--                </x-nav-link>--}}
+                <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">
+                    Мои заказы
+                </x-nav-link>
             @endauth
         </div>
         <!-- Vue -->
